@@ -13,9 +13,11 @@ function App() {
   const [toggleRefresh, setToggleRefresh] = useState(true)
 
   useEffect(() => {
+    
 
     let getAllUsers = async () => {
-      let response = await axios.get('http://localhost:5001/users');
+      //let response = await axios.get('http://localhost:5001/users');
+       let response = await axios.get('https://new-file-uploading-production.up.railway.app/users');
       setUsers(response.data.data)
     }
     getAllUsers();
