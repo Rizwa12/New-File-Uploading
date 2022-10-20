@@ -1,10 +1,7 @@
 import './App.css';
 import axios from 'axios';
 import { useEffect, useState } from "react";
-
-
 function App() {
-
   const [Name, setName] = useState("")
   const [Email, setEmail] = useState("")
   const [Password, setPassword] = useState("")
@@ -16,17 +13,13 @@ function App() {
     
 
     let getAllUsers = async () => {
-      //let response = await axios.get('http://localhost:5001/users');
+     // let response = await axios.get('http://localhost:5001/users');
        let response = await axios.get('https://new-file-uploading-production.up.railway.app/users');
       setUsers(response.data.data)
     }
     getAllUsers();
 
   }, [toggleRefresh])
-
-
-
-
 
   const doSignup = async (e) => {
     e.preventDefault();
@@ -46,7 +39,9 @@ function App() {
 
     axios({
       method: 'post',
-      url: "http://localhost:5001/signup",
+      //url: "http://localhost:5001/signup",
+     url: "https://new-file-uploading-production.up.railway.app/signup",
+
       data: formData,
       headers: { 'Content-Type': 'multipart/form-data' },
       // withCredentials: true
@@ -65,14 +60,18 @@ function App() {
     <div>
 
       <form onSubmit={doSignup}>
-        Name: <input name="name" type="text" placeholder="Name" id='name' onChange={(e)=>{setName(e.target.value)}} />
+        Name: <br/>
+        <input name="name" type="text" placeholder="Name" id='name' onChange={(e)=>{setName(e.target.value)}} />
         <br />
-        Email: <input name="email" type="email" placeholder="Email" id='email' onChange={(e)=>{setEmail(e.target.value)}} />
+        Email:<br/>
+         <input name="email" type="email" placeholder="Email" id='email' onChange={(e)=>{setEmail(e.target.value)}} />
         <br />
-        Password: <input name="password" type="password" placeholder="Password" id='password' onChange={(e)=>{setPassword(e.target.value)}} />
+        Password: <br/>
+        <input name="password" type="password" placeholder="Password" id='password' onChange={(e)=>{setPassword(e.target.value)}} />
         <br />
 
-        Profile Picture: <input type="file" id="profilePictureInput" accept='image/*'
+        Profile Picture:<br/>
+               <input type="file" id="profilePictureInput" accept='image/*'
           onChange={() => {
             ////// to display imager instantly on screen
             var profilePictureInput = document.getElementById("profilePictureInput");
@@ -86,21 +85,26 @@ function App() {
         <br />
         <button type='submit'>Signup</button>
       </form>
+      <h1>View User List</h1>
 
+<div class="user">
+      
 
-      <h1>Users List: </h1>
-
-      <div>
+      <div class="user_list">
         {users.map(eachUser => (
           <div key={eachUser.id}>
           <br/>
+          <img class="pic" src={eachUser.profilePicture} alt="" /><br/>
+          <label>Name: </label>
             <span>{eachUser.name}</span>
             <br/>
+            <label>Email: </label>
             <span>{eachUser.email}</span>
             <br/>
-            <img width="100px" src={eachUser.profilePicture} alt="" />
+            
           </div>
         ))}
+      </div>
       </div>
 
 

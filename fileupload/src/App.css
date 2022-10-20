@@ -1,3 +1,31 @@
+
+body
+{
+    background-color: blue;
+    height: 100vh;
+}
+
+.user_list{
+  display: flex;
+  flex-direction: row;
+  flex-shrink: inherit;
+  justify-content: space-between;
+  margin: 10px;
+  padding:10px;
+  width: 60%;
+}
+.pic{
+  width: 100px;
+  height: 100px;
+  
+  border-radius: 3px;
+}
+form{
+  align-items: center;
+   
+    width: 100%;
+    justify-content: center;
+  }
 .App {
   text-align: center;
 }
