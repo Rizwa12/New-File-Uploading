@@ -13,7 +13,7 @@ function App() {
     
 
     let getAllUsers = async () => {
-     // let response = await axios.get('http://localhost:5001/users');
+      //let response = await axios.get('http://localhost:5001/users');
        let response = await axios.get('https://new-file-uploading-production.up.railway.app/users');
       setUsers(response.data.data)
     }
@@ -39,7 +39,7 @@ function App() {
 
     axios({
       method: 'post',
-      //url: "http://localhost:5001/signup",
+     // url: "http://localhost:5001/signup",
      url: "https://new-file-uploading-production.up.railway.app/signup",
 
       data: formData,
@@ -92,7 +92,7 @@ function App() {
 
       <div class="user_list">
         {users.map(eachUser => (
-          <div key={eachUser.id}>
+          <div class="display" key={eachUser.id}>
           <br/>
           <img class="pic" src={eachUser.profilePicture} alt="" /><br/>
           <label>Name: </label>
